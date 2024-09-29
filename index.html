@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>FAMOUS: High-Fidelity Monocular 3D Human Digitization Using View Synthesis<br></title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://humansensinglab.github.io/FAMOUS/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FAMOUS: High-Fidelity Monocular 3D Human Digitization Using View Synthesis">
+    <meta property="og:description" content="">
+    <meta property="og:image"
+        content="https://opengraph.b-cdn.net/production/images/e2d06d2c-0d8b-44cc-9f4f-1ab52f6fb49b.png?token=q-KHFKHxAZZTjzuQ1Nh-6q9v6bBjwwmZOmLww-Wj0Q8&height=532&width=801&expires=33262767637">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="humansensinglab.github.io">
+    <meta property="twitter:url" content="https://humansensinglab.github.io/FAMOUS/">
+    <meta name="twitter:title" content="FAMOUS: High-Fidelity Monocular 3D Human Digitization Using View Synthesis">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image"
+        content="https://opengraph.b-cdn.net/production/images/e2d06d2c-0d8b-44cc-9f4f-1ab52f6fb49b.png?token=q-KHFKHxAZZTjzuQ1Nh-6q9v6bBjwwmZOmLww-Wj0Q8&height=532&width=801&expires=33262767637">
+
+    <!-- mirror: F0%9F%AA%9E&lt -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/codemirror.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/video_comparison.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="header" style="text-align: center; margin: auto;">
+        <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+            <h2 class="col-md-12 text-center" id="title">
+                FAMOUS: High-Fidelity Monocular 3D Human Digitization Using View Synthesis<br>
+                <small>
+                    ECCV 2024
+                </small>
+            </h2>
+        </div>
+        <div class="row" id="author-row" style="margin:0 auto;">
+            <div class="col-md-12 text-center" style="display: table; margin:0 auto">
+                <table class="author-table" id="author-table" style="table-layout: fixed; width: 85%;">
+                    <tr>
+                        <td>
+                            <a style="text-decoration:none" href="https://vishnumh.github.io/">
+                                Vishnu Mani Hema
+                            </a>
+                            <br>Carnegie Mellon University
+                        </td>
+                        <td>
+                            <a style="text-decoration:none" href="https://shubhraaich.github.io/">
+                                Shubhra Aich
+                            </a>
+                            <br>Carnegie Mellon University
+                        </td>
+                        <td>
+                            <a style="text-decoration:none" href="">
+                                Christian Haene
+                            </a>
+                            <br>Independent Researcher
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a style="text-decoration:none" href="">
+                                Jean-Charles Bazin
+                            </a>
+                            <br>Independent Researcher
+                        </td>
+                        <td>
+                            <a style="text-decoration:none" href="https://www.cs.cmu.edu/~ftorre/">
+                                Fernando De La Torre
+                            </a>
+                            <br>Carnegie Mellon University
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+    </script>
+    <div class="container" id="main">
+        <br>
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <a href="./docs/paper.pdf">Paper </a>
+                /
+                <a href="./docs/supp_document.pdf">Supp. Doc</a>
+                /
+                <a href="https://github.com/humansensinglab/famous">Code</a>
+            </div>
+        </div>
+
+
+        <br><br>
+        <div class="row">
+            <div class="text-center">
+                <img src="./img/teaser.jpg" width="65%">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Overview
+                </h3>
+                <p class="text-justify">
+                    The advancement in deep implicit modeling and articulated
+                    models has significantly enhanced the process of digitizing human figures
+                    in 3D from just a single image. While state-of-the-art methods have
+                    greatly improved geometric precision, the challenge of accurately inferring
+                    texture remains, particularly in obscured areas such as the back of
+                    a person in frontal-view images. This limitation in texture prediction
+                    largely stems from the scarcity of large-scale and diverse 3D datasets,
+                    whereas their 2D counterparts are abundant and easily accessible. To
+                    address this issue, our paper proposes leveraging extensive 2D fashion
+                    datasets to enhance both texture and shape prediction in 3D human digitization.
+                    We incorporate 2D priors from the fashion dataset to learn the
+                    occluded back view, refined with our proposed domain alignment strategy.
+                    We then fuse this information with the input image to obtain a fully
+                    textured mesh of the given person. Through extensive experimentation
+                    on standard 3D human benchmarks, we demonstrate the superior performance
+                    of our approach in terms of both texture and geometry.
+                </p>
+                <!-- <div class="row">
+                    <div class="text-center">
+                        <img src="./img/results.jpg" width="100%">
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                </div>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{famous,
+    author={ Mani Hema, Vishnu and Aich, Shubhra and Haene, Christian and Bazin, Jean-Charles and De La Torre, Fernando},
+    title={FAMOUS: High-Fidelity Monocular 3D Human Digitization Using View Synthesis},
+    booktitle = {European Conference on Computer Vision (ECCV)},
+    year={2024},
+    url = {https://humansensinglab.github.io/FAMOUS/}
+}</textarea>
+                </div>
+                <div style="clear: both;">
+                    <br>For SIGGRAPH format, you can try the following:
+                </div>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex2" class="form-control" readonly>
+@inproceedings{taming3dgs,
+    author={{Mallick and Goel} and Kerbl, Bernhard and Vicente Carrasco, Francisco and Steinberger, Markus and De La Torre, Fernando},
+    title={Taming 3DGS: High-Quality Radiance Fields with Limited Resources},
+    booktitle = {SIGGRAPH Asia 2024 Conference Papers},
+    year={2024},
+    doi = {10.1145/3680528.3687694},
+    url = {https://humansensinglab.github.io/taming-3dgs/}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <br>
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a> and <a
+                    href="http://dorverbin.github.io/refnerf">Ref-NeRF</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
